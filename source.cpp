@@ -24,13 +24,21 @@ int main() {
       std::cout << "Введите нечетный порядок магического квадрата: \n>> ";
       std::cin >> n;
 
+      while (n % 2 == 0) {
+        std::cout << "Порядок должен быть нечетным!" << std::endl;
+        std::cout <<"Введите нечетный порядок или нажмите 'ctrl + c' : \n>>" ; 
+        std::cin >> n  ; 
+
+       
+      }
+
       generateMagicSquare(n);
       task_number = 3 ;
       break;
       
     case 2: 
-      std::cout<<"МИНИ ИНСТРУКЦИЯ " ; 
-
+      Square_info() ; 
+      task_number = 3 ; 
       break ; 
     case 3 : 
       break ;

@@ -2,11 +2,18 @@
 #include <iomanip>
 #include <vector> 
 
+
+
+void Output_square(int n , std::vector<std::vector<int>> magicSquare) ; 
+
+
 void generateMagicSquare(int n) {
   if (n % 2 == 0) {
     std::cout << "Порядок должен быть нечетным!" << std::endl;
-    return;
+    return ; 
+    
   }
+  
 
   std::vector<std::vector<int>> magicSquare(n, std::vector<int>(n, 0));
 
@@ -27,7 +34,12 @@ void generateMagicSquare(int n) {
       j = next_j;
     }
   }
+  Output_square(n , magicSquare) ; 
+  
+}
 
+
+void Output_square(int n , std::vector<std::vector<int>> magicSquare) { 
   std::cout << "Магический квадрат порядка " << n << ":\n";
   std::cout << "Сумма в каждой строке, столбце и диагонали = " 
        << n * (n * n + 1) / 2 << "\n\n";
@@ -39,3 +51,7 @@ void generateMagicSquare(int n) {
     std::cout << std::endl;
   }
 }
+
+
+
+

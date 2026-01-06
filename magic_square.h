@@ -3,7 +3,7 @@
 
 void generateMagicSquare(int n) ; 
 
-#include "generate_square_module.cpp" 
+#include "magic_square_module.cpp" 
 
 
 

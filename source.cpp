@@ -25,7 +25,9 @@ int main() {
       std::cin >> n;
 
       generateMagicSquare(n);
+      task_number = 3 ;
       break;
+      
     case 2: 
       std::cout<<"МИНИ ИНСТРУКЦИЯ " ; 
 

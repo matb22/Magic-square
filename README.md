@@ -35,3 +35,5 @@
 
 <h4>Клонировать репозиторий :</h4>
 <p>When creating a project in Visual Studio, click "Clone Repository" and paste the following link - https://github.com/matb22/Magic-square</p>
+<p>Click clone</p>
+<p>Done!</p>

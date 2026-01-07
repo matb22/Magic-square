@@ -1,11 +1,15 @@
 #include <iostream>
 #include <iomanip>
 #include <vector> 
+#include <fstream>
+#include <cmath>
 
 
 
-void Output_square(int n , std::vector<std::vector<int>> magicSquare) ; 
 
+void Output_square_console(int n , std::vector<std::vector<int>> magicSquare) ; 
+void Output_square_file(int n , std::vector<std::vector<int>> magicSquare);
+int countDigits(int n  )  ; 
 
 void generateMagicSquare(int n) {
   
@@ -30,23 +34,61 @@ void generateMagicSquare(int n) {
       j = next_j;
     }
   }
-  Output_square(n , magicSquare) ; 
+  Output_square_console(n , magicSquare) ; 
+  Output_square_file( n , magicSquare) ; 
   
 }
 
 
-void Output_square(int n , std::vector<std::vector<int>> magicSquare) { 
+void Output_square_console(int n , std::vector<std::vector<int>> magicSquare) { 
   std::cout << "Магический квадрат порядка " << n << ":\n";
   std::cout << "Сумма в каждой строке, столбце и диагонали = " 
        << n * (n * n + 1) / 2 << "\n\n";
 
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
-      std::cout << std::setw(4) << magicSquare[i][j] << " ";
+      std::cout << std::setw(countDigits(n*n) + 1) << magicSquare[i][j] << " ";
     }
     std::cout << std::endl;
   }
 }
+
+
+
+void Output_square_file(int n , std::vector<std::vector<int>> magicSquare) { 
+  std::ofstream f2 ; 
+  f2.open("magic_square.txt" , std::ios::out) ;
+  
+  f2 << "Магический квадрат порядка " << n << ":\n";
+  f2 << "Сумма в каждой строке, столбце и диагонали = " 
+       << n * (n * n + 1) / 2 << "\n\n";
+
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      f2 << std::setw(countDigits(n*n) +  1) << magicSquare[i][j] << " ";
+    }
+    f2 << std::endl;
+  }
+
+  f2.close() ; 
+}
+
+
+
+
+
+int countDigits(int n  ) {
+
+    if (n == 0) return 1; 
+    if (n < 0) n = -n; 
+    
+    return static_cast<int>(log10(n)) + 1;
+}
+
+
+
+
+
 
 
 void Square_info() { 
@@ -57,4 +99,6 @@ void Square_info() {
  
   
 }
+
+
 

@@ -23,8 +23,15 @@
 
 <br>
 
+
 <div align="center">
-  <h2>🚀 Установка</h2>
+  <h2>🚀 Установка(легкая)</h2>
+</div>
+<h3>Скачайте файл source.exe и откройте его</h3>
+
+
+<div align="center">
+  <h2>🚀 Установка(сложная)</h2>
 </div>
 
 <h3>Предварительные требования</h3>
@@ -34,7 +41,10 @@
 <h3>Сборка из исходного кода</h3>
 
 <h4>Клонировать репозиторий :</h4>
-<p>Open the customized Vs code with the visual studio compiler and write to terminal :</p>
+<p>Откройте настроенный Vs code с помощью компилятора visual Studio и выполните запись в terminal :</p>
 <pre><code>git clone -b Windows_edition https://github.com/matb22/Magic-square.git</code></pre>
-<p>open the source.cpp file and start the compilation process using the button in vs code</p>
+<p>Откройте файл source.cpp и запустите процесс компиляции с помощью кнопки в vs code</p>
 <p>Done!</p>
+
+
+

@@ -1,2 +1,6 @@
 source
 magic_square_module
+*.exe
+*.ilk
+*.obj
+*.pdb

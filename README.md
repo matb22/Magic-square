@@ -34,6 +34,7 @@
 <h3>Сборка из исходного кода</h3>
 
 <h4>Клонировать репозиторий :</h4>
-<p>When creating a project in Visual Studio, click "Clone Repository" and paste the following link - https://github.com/matb22/Magic-square</p>
-<p>Click clone</p>
+<p>Open the customized Vs code with the visual studio compiler</p>
+<pre><code>git clone -b Windows_edition https://github.com/matb22/Magic-square.git</code></pre>
+<p>open the source.cpp file and start the compilation process using the button in vs code</p>
 <p>Done!</p>

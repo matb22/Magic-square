@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>⚠️Important! This branch is for Windows and the VS compiler. If you have Linux and the g++ compiler, please use the main branch.⚠️</h1>
+  <h1>⚠️Важный! Эта ветка предназначена для Windows и компилятора VS. Если у вас Linux и компилятор g++, используйте main ветку.⚠️</h1>
 </div>
 
 <br>

@@ -34,7 +34,7 @@
 <h3>Сборка из исходного кода</h3>
 
 <h4>Клонировать репозиторий :</h4>
-<p>Open the customized Vs code with the visual studio compiler</p>
+<p>Open the customized Vs code with the visual studio compiler and write to terminal :</p>
 <pre><code>git clone -b Windows_edition https://github.com/matb22/Magic-square.git</code></pre>
 <p>open the source.cpp file and start the compilation process using the button in vs code</p>
 <p>Done!</p>

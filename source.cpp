@@ -1,99 +1,113 @@
 #include <iostream>
 #include <limits>
 #include "magic_square.h"
-#include <windows.h>
-#include <cmath>
+#include <Windows.h>
 
+constexpr int kMinMenuChoice = 1;
+constexpr int kMaxMenuChoice = 3;
+constexpr int kMinSquareSize = 1;
+
+void DisplayMenu() {
+  std::cout << "    ========== Меню ==========\n";
+  std::cout << "    1) Создать магический квадрат\n";
+  std::cout << "    2) Что такое магический квадрат?\n";
+  std::cout << "    3) Выход\n";
+  std::cout << "Введите номер пункта:\n>> ";
+}
+
+int GetMagicSquareSize() {
+  int size = 0;
+  
+  std::cout << "Введите нечетный порядок квадрата:\n>> ";
+  
+  while (true) {
+    if (!(std::cin >> size)) {
+      std::cin.clear();
+      std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+      std::cout << "Ошибка! Введите число от 3 до 2,147,483,646 :\n>> ";
+      continue;
+    }
+    
+    if (size <= kMinSquareSize) {
+      std::cout << "Порядок должен быть положительным! Попробуйте снова:\n>> ";
+      std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+      continue;
+    }
+    
+    if (size % 2 == 0) {
+      std::cout << "Порядок должен быть нечетным! Попробуйте снова:\n>> ";
+      std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+      continue;
+    }
+    
+    break;
+  }
+  
+  return size;
+}
+
+bool PromptToContinue() {
+  char choice = '\0';
+  std::cout << "\nВыполнить еще одну операцию? (y/n): ";
+  std::cin >> choice;
+  std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+  
+  return !(choice == 'n' || choice == 'N');
+}
+
+void WaitForEnter() {
+  std::cout << "\nНажмите Enter для возврата в меню...";
+  std::cin.get();
+}
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
-    int task_number;
-    int n;
-    bool exit_program = false;
+  SetConsoleOutputCP(CP_UTF8);
+  SetConsoleCP(CP_UTF8);
 
-    while (!exit_program) {
-        std::cout << "    ==========Menu==========\n";
-        std::cout << "    1) Создать магический квадрат\n";
-        std::cout << "    2) Что такое магический квадрат?\n";
-        std::cout << "    3) Выход\n";
-        std::cout << "Введите номер желаемого пункта: \n>> ";
-
-        // Проверка ввода пункта меню
-        while (!(std::cin >> task_number) || task_number < 1 || task_number > 3) {
-            std::cin.clear();
-            std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-            std::cout << "Неверный ввод! Выберите пункт 1-3: \n>> ";
-        }
-
-        std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n'); // Очистка буфера
-
-        switch (task_number) {
-        case 1: {
-            
-            std::cout << "Введите нечетный порядок магического квадрата: \n>> ";
-            
-            
-            while (true) {
-                // Пытаемся прочитать число
-                if (!(std::cin >> n)) {
-                    // Ошибка ввода (не число)
-                    std::cin.clear();
-                    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-                    std::cout << "Ошибка! Введите число: \n>> ";
-                    continue;
-                }
-                
-                // Проверяем на четность
-                if (n % 2 == 0) {
-                    std::cout << "Порядок должен быть нечетным! Попробуйте снова: \n>> ";
-                    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-                    continue;
-                }
-                
-                // Проверяем, что число положительное
-                if (n <= 0) {
-                    std::cout << "Порядок должен быть положительным! Попробуйте снова: \n>> ";
-                    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-                    continue;
-                }
-                
-                // Все проверки пройдены
-                break;
-            }
-            
-           std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n'); // Очистка буфера
-            
-            // Генерация квадрата
-            generateMagicSquare(n);
-            
-            // Спросить, хочет ли пользователь продолжить
-            char choice;
-            std::cout << "\nХотите выполнить еще одну операцию? (y/n): ";
-            std::cin >> choice;
-           std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-            
-            if (choice == 'n' || choice == 'N') {
-                exit_program = true;
-            }
-            break;
-        }
-        
-        case 2:
-            Square_info();
-            
-            // Спросить, хочет ли пользователь продолжить
-            char choice;
-            std::cout << "\nНажмите Enter для возврата в меню...";
-            std::cin.get();
-            break;
-            
-        case 3:
-            exit_program = true;
-            break;
-        }
+  int menu_choice = 0;
+  bool exit_program = false;
+  
+  while (!exit_program) {
+    DisplayMenu();
+    
+    while (!(std::cin >> menu_choice) ||
+           menu_choice < kMinMenuChoice ||
+           menu_choice > kMaxMenuChoice) {
+      std::cin.clear();
+      std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+      std::cout << "Неверный ввод! Выберите пункт 1-3:\n>> ";
     }
-
-    std::cout << "Программа завершена. До свидания!\n";
-    return 0;
+    
+    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+    
+    switch (menu_choice) {
+      case 1: {
+        const int square_size = GetMagicSquareSize();
+        std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+        
+        GenerateMagicSquare(square_size);
+        
+        if (!PromptToContinue()) {
+          exit_program = true;
+        }
+        break;
+      }
+        
+      case 2:
+        DisplaySquareInfo();
+        WaitForEnter();
+        break;
+        
+      case 3:
+        exit_program = true;
+        break;
+        
+      default:
+        std::cerr << "Неожиданный выбор меню: " << menu_choice << "\n";
+        break;
+    }
+  }
+  
+  std::cout << "Программа завершена. До свидания!\n";
+  return 0;
 }

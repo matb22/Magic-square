@@ -45,7 +45,7 @@
 <h3>Сборка из исходного кода</h3>
 
 <h4>Клонировать репозиторий :</h4>
-<pre><code>git clone https://github.com/matb22/Magic-square</code></pre>
+<pre><code>git clone -b main https://github.com/matb22/Magic-square.git</code></pre>
 
 <h4>Компиляция с помощью g++ и запуск :</h4>
 <pre><code>cd Magic-square
